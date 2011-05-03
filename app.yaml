@@ -1,0 +1,16 @@
+application: makeitlabs-rfid
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+  
+- url: /.*
+  script: rfid.py
+  secure: optional
+
+- url: /admin/
+  script: $PYTHON_LIB/google/appengine/ext/admin
+  login: admin

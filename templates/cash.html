@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	</head>
+  <body>
+	  <h1>MakeIt Cash<h1>
+	  <h3>You are signed in as: </h3> 
+	  {{username}}
+	  <br><br>
+	  {% if has_card %}
+	  <p><b>Your balance is:</b></p>
+	  $ {{value}}
+	  
+	  {% else %}
+	  <p><b>You do not have a card.</b></p>
+	  <p><b><a href="/newcard">Go Register One</a></b></p>
+	  {% endif %}
+	  <br><br>
+	  <a href="/">Back to Home</a>
+	  </body>
+</html>

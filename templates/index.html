@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css"/>
+	</head>
+	<body>
+		<h1>MakeIt Labs RFID </h1>
+		  
+		<h3>You are signed in as: <br> {{username}}</h3>
+		
+		<p>You <b>{% if not has_card %}do not{% endif %} have</b> a registered RFID card.</p>
+		
+		
+		 <br><a href="/newcard">Add a card</a>
+		 <br><a href="/cash">MakeIt Cash</a>
+		 <br><a href="/tools">Tool Authorization</a>
+		 <br><a href="/admin">Admin</a>
+		 <br>
+		 <br>
+	<body>
+</html>

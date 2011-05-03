@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	</head>
+  <body>
+	<h3>You are signed in as: {{username}}</h3>
+	{% if not has_items %}
+		<h2>Authorized only for basic tooling</h2>
+	{% else %}	  
+		<p><b>Tools authorized for use:  </b><br>
+		{% for tool in tools %}
+			{{tool.name}}<br>
+		{% endfor %}
+	{% endif %}
+	
+	  <a href="/">Back to Home</a>
+	<form>
+	  <p><input type="submit" name="newcard" value="Add Card" /></p>
+	</form>
+  </body>
+</html>

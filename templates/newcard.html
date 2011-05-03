@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	</head>
+  <body>
+	  <h3>You are signed in as: </h3> 
+	  {{username}}
+	  
+	  {% if has_card %}
+	  <p>You already have a registered card.</p>
+	  <p>Enter a <b>new<b> card code:</p>
+	  {% else %}
+	  <p><b>You do not have a card.</b></p>
+	  <p> Enter card code:</p>
+	  {% endif %}
+	  <form action="/newcard" method="post">
+		  <p><input type="text" name="card_code" /></p>
+		  <p><input type="submit" name="newcard" value="Add Card" /></p>
+	  </form>
+	  <a href="/">Back to Home</a>
+	  </body>
+</html>
