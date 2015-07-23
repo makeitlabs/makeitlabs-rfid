@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <style type="text/css">
+      h1{font-family:"Arial", sans-serif;}
+      h3{font-family:"Arial", sans-serif;}
+    </style>
+  </head>
+  <body>
+    <form action="/user/{{username}}" method="post">
+
+      <A HREF="/admin">Return to Admin View</A>
+ 
+      <!-- Displays all the items in the database, with codes for deletion-->
+      <h1>{{nickname}}</h1>
+      <h3>{{email}}</h3>
+      <h3>Permissions</h3>
+	  
+      <table border="0" cellpadding=10>
+	{% for p in permissions.items %}
+	<tr>
+	  <td>{{ p.0 }}</td>
+	  <td bgcolor="{% if p.1 %}#DDFFDD{% else %}#FFDDDD{% endif %}">
+	    <input type="checkbox" name="perm_{{p.0}}" value="true" {% if p.1 %}checked="checked"{% else %}{% endif %}>  
+	  </td>
+	</tr>
+	{% endfor %}
+      </table>
+      
+      <p>
+	<input type="submit" name="user" value="Update Permissions" />
+	<input type="reset">
+      </p>
+      
+      <h3>Access Log</h3>
+
+      <p>
+	Showing last 250 log entries.
+      </p>
+      <table border="0" cellpadding=5>
+	<tr>
+	  <th>Date</th>
+	  <th>Time</th>
+	  <th>Resource</th>
+	  <th>Allowed</th>
+	</tr>
+	{% for event in log %}
+	<tr bgcolor="{% ifnotequal event.allowed 'Yes' %}#FFDDDD{% endifnotequal %}">
+	  <td>{{event.timestamp|date:_("m/d/y")}}</td> 
+	  <td>{{event.timestamp|date:_("h:i:s a T")}}</td>
+	  <td>{{event.resourcedesc}}</td>
+	  
+	  <td>{{event.allowed}}</td>
+	</tr>
+	{% endfor %}
+      </table>
+
+    </form>
+  </body>
+</html>

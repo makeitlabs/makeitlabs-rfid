@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+		<style type="text/css">
+		h1{font-family:"Arial", sans-serif;}
+		h3{font-family:"Arial", sans-serif;}
+		</style>
+		</head>
+	<body>
+		<!--
+		<h1>Access Log</h1>
+		-->
+		<!-- Displays all the items in the database, with codes for deletion-->
+		<table border="0" cellpadding=5>
+			<tr>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Member</th>
+				<th>Resource</th>
+				<th>Allowed</th>
+			</tr>
+			{% for event in log %}
+			<tr bgcolor="{% ifnotequal event.allowed 'Yes' %}#FFDDDD{% endifnotequal %}">
+				<td>{{event.timestamp|date:_("m/d/y")}}</td> 
+				<td>{{event.timestamp|date:_("h:i:s a T")}}</td>
+				<td>{{event.nickname}}</td>
+				<td>{{event.resourcedesc}}</td>
+
+				<td>{{event.allowed}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<br>
+		<br>
+	</body>
+</html>

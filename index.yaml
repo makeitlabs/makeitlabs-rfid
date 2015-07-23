@@ -1,0 +1,7 @@
+indexes:
+
+- kind: AccessLog
+  properties:
+  - name: username
+  - name: timestamp
+    direction: desc
