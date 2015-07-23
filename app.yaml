@@ -1,16 +1,25 @@
-application: makeitlabs-rfid
-version: 1
+application: makeitlabs-rfid-hrd
+version: 6
 runtime: python
 api_version: 1
+
+builtins:
+- datastore_admin: on
+- remote_api: on
+- admin_redirect: on
+- appstats: on
 
 handlers:
 - url: /stylesheets
   static_dir: stylesheets
+
+- url: /images
+  static_dir: images
   
 - url: /.*
   script: rfid.py
   secure: optional
 
-- url: /admin/
-  script: $PYTHON_LIB/google/appengine/ext/admin
-  login: admin
+- url: /datastore_admin
+  script: $PYTHON_LIB/google/appengine/ext/datastore_admin/main.py
+  

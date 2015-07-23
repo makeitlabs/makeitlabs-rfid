@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+		<style type="text/css">
+		h1{font-family:"Arial", sans-serif;}
+		h3{font-family:"Arial", sans-serif;}
+		</style>
+		</head>
+	<body>
+		<!--
+		<h1>Access Log</h1>
+		-->
+		<!-- Displays all the items in the database, with codes for deletion-->
+		<!-- <form action="/admin" method="post"> -->
+		<table border="0" cellpadding=5>
+			<tr>
+				<th>Member</th>
+				<th>Access</th>
+				<th colspan=2>Last Time Acccessed</th>
+			</tr>
+			
+			{% for card in cards %}
+			<tr>
+				<td><a href="/user/{{card.username}}">{{card.nickname}}</a> </td>
+
+				<td bgcolor="{% if card.access %}#DDFFDD{% else %}#FFDDDD{% endif %}">
+				  {% if card.access %}Yes{% else %}No{% endif %}
+				</td>
+				  
+				<!--
+				  <input type="checkbox" name="allowed_{{card.username}}" value="true" {% if card.access %}checked="checked"{% else %}{% endif %}>  
+				</td>
+				-->
+
+				<td>{{card.lastAccessed|date:_("m/d/y")}}</td>
+				<td>{{card.lastAccessed|date:_("h:i:s a T")}}</td> 
+				
+			</tr>
+			{%endfor%}
+			
+		</table>
+		<!--
+		<p><input type="submit" name="admin" value="Update Access" /></p>
+		<p><INPUT type="reset"></p>
+		</form>
+		-->
+
+		<br>
+		<br>
+	</body>
+</html>
